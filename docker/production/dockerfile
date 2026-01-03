@@ -1,4 +1,4 @@
-FROM node:lts-bullseye-slim AS build
+FROM node:lts AS build
 
 # arguments
 ARG VERSION="master"
