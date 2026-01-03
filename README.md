@@ -7,7 +7,7 @@ A web frontend for the [headscale](https://github.com/juanfont/headscale) Tailsc
 > [!WARNING]  
 > The latest major release of headscale ui change the default container ports from `80` and `443` to `8080` and `8443` respectively. If you are using the `HTTP_PORT` or `HTTPS_PORT` environment variables this does not affect you, otherwise you need to change your ports in your docker-compose or kubernetes manifests.
 
-Headscale-UI is currently released as a static site: just take the release and host with your favorite web server. Headscale-UI expects to be served from the `/web` path to avoid overlap with headscale on the same domain. Note that due to CORS (see https://github.com/juanfont/headscale/issues/623), headscale UI *must* be served on the same subdomain, or CORS headers injected via reverse proxy.
+Headscale-UI is currently released as a static site: just take the release and host with your favorite web server. Headscale-UI expects to be served from the `/webXui` path to avoid overlap with headscale on the same domain. Note that due to CORS (see https://github.com/juanfont/headscale/issues/623), headscale UI *must* be served on the same subdomain, or CORS headers injected via reverse proxy.
 
 ### Docker Installation
 If you are using docker, you can install `headscale` alongside `headscale-ui`, like so:
@@ -47,7 +47,7 @@ The docker container lets you set the following settings:
 You will need a reverse proxy to install `headscale-ui` on your domain. Here is an example [Caddy Config](https://caddyserver.com/) to achieve this:
 ```
 https://hs.yourdomain.com.au {
-	reverse_proxy /web* http://headscale-ui:8080
+	reverse_proxy /webXui* http://headscale-ui:8080
 	reverse_proxy * http://headscale:8080
 }
 

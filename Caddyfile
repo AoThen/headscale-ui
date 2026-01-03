@@ -1,6 +1,6 @@
 :8080 {
-	redir / /web
-	uri strip_prefix /web
+	redir / /webXui
+	uri strip_prefix /webXui
 	file_server {
 		root ./build
 	}

@@ -45,7 +45,7 @@ EXPOSE 443
 
 # Set the staging environment
 WORKDIR /data
-WORKDIR /web
+WORKDIR /webXui
 WORKDIR /staging/scripts
 WORKDIR /staging
 
@@ -53,7 +53,7 @@ WORKDIR /staging
 COPY scripts/* ./scripts/
 # Copy default caddy config from project root
 COPY ./Caddyfile /staging/Caddyfile
-COPY --from=build /staging/${PROJECT_NAME}/build /web
+COPY --from=build /staging/${PROJECT_NAME}/build /webXui
 
 RUN apk add --no-cache caddy
 
@@ -65,7 +65,7 @@ RUN addgroup -S appgroup && adduser -D appuser -G appgroup
 RUN chown -R 0:0 scripts
 RUN chmod -R 755 scripts
 
-RUN chown -R appuser:appgroup /web
+RUN chown -R appuser:appgroup /webXui
 RUN chown -R appuser:appgroup /data
 
 # Tell docker that all future commands should run as the appuser user

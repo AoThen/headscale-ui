@@ -18,10 +18,10 @@ Below is an example of how to set up a redirect in NGINX from the default headsc
     ...
 
     location /register/nodekey {
-        rewrite ^/register/(.*)$ /web/devices.html?nodekey=$1 redirect;
+        rewrite ^/register/(.*)$ /webXui/devices.html?nodekey=$1 redirect;
     }
 
-    location /web {
+    location /webXui {
 
     ...
 ```

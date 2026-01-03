@@ -2,7 +2,7 @@
 
 (Thanks [DennisGaida](https://github.com/DennisGaida) and [Niek](https://github.com/Niek))
 
-Below is a complete docker-compose example for bringing up Traefik + headscale + headscale-ui. Run with: `docker-compose up -d` and headscale-ui will be accessible at <http://localhost/web>.
+Below is a complete docker-compose example for bringing up Traefik + headscale + headscale-ui. Run with: `docker-compose up -d` and headscale-ui will be accessible at <http://localhost/webXui>.
 
 ```yaml
 version: '3.9'
@@ -29,7 +29,7 @@ services:
     restart: unless-stopped
     labels:
       - traefik.enable=true
-      - traefik.http.routers.headscale-ui-rtr.rule=PathPrefix(`/web`) # you might want to add: && Host(`your.domain.name`)"
+      - traefik.http.routers.headscale-ui-rtr.rule=PathPrefix(`/webXui`) # you might want to add: && Host(`your.domain.name`)"
       - traefik.http.services.headscale-ui-svc.loadbalancer.server.port=8080
 
   traefik:
@@ -78,8 +78,8 @@ Once all three services are running, set up Headscale and Headscale UI _by creat
 2. SSL: Select or create the SSL certificate you'll be using for the entire FQDN where both will run. Make sure to enable Force SSL, HTTP/2 Support, HSTS and HSTS Subdomains.
 3. Advanced: In the text box, add the following to manage the Headscale UI path properly: 
   ```json
-    location /web/ {
-      proxy_pass https://XXX.XXX.XXX.XXXX:port/web/;
+    location /webXui/ {
+      proxy_pass https://XXX.XXX.XXX.XXXX:port/webXui/;
   }
   ```
 
@@ -96,7 +96,7 @@ map $http_upgrade $connection_upgrade {
 server {
     server_name headscale-01.example.com;
 
-    location /web {
+    location /webXui {
         alias /usr/local/www/headscale-ui;
         index index.html;
     }
