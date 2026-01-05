@@ -16,9 +16,7 @@
 :{$HTTPS_PORT} {
 	redir / /webXui
 	uri strip_prefix /webXui
-	tls internal {
-		on_demand
-	}
+	tls {$TLS_CERT_PATH} {$TLS_KEY_PATH}
 	file_server {
 		root /webXui
 	}

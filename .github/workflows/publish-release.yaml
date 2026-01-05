@@ -73,7 +73,7 @@ jobs:
         if: ${{ env.NOT_PREVIOUSLY_PUBLISHED != 0 }}
         id: extract
         with:
-          image: ghcr.io/${{ steps.var.outputs.lower }}:${{ env.PRIMARY_TAG }}
+          image: ghcr.io/${{ steps.var.outputs.lower }}:beta   #${{ env.PRIMARY_TAG }}
           path: web
           
       - name: create release asset
